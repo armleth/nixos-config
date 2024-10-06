@@ -8,6 +8,8 @@
 
     home.packages = with pkgs; [
         ripgrep
+        fzf
+        fd
     ];
 
     xsession.windowManager.i3 = rec {
@@ -33,19 +35,13 @@
             userEmail = "armand.thibaudon@gmail.com";
         };
 
-        # bash = {
-        #     enable = true;
-        #     shellAliases = {
-        #         rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/.";
-        #         vim = "nvim";
-        #     };
-        # };
-
         alacritty = {
             enable = true;
             settings = {
                 shell.program = "${pkgs.zsh}/bin/zsh";
                 font = {
+                    size = 14;
+
                     normal.family = "MesloLGS NF";
                     bold.family = "MesloLGS NF";
                     italic.family = "MesloLGS NF";
@@ -55,32 +51,57 @@
 
         zsh = {
             enable = true;
-            # initExtra = ''
-            #     [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
-            # '';
+            initExtra = ''
+                [[ ! -f ${./p10k-config/p10k.zsh} ]] || source ${./p10k-config/p10k.zsh}
+
+                bindkey -e
+                bindkey '^[[1;5C' forward-word
+                bindkey '^[[1;5D' backward-word
+            '';
+
+            zplug = {
+                enable = true;
+                plugins = [
+                { name = "zsh-users/zsh-syntax-highlighting"; }
+                { name = "zsh-users/zsh-completions"; }
+                { name = "zsh-users/zsh-autosuggestions"; }
+                { name = "Aloxaf/fzf-tab"; }
+                { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
+                ];
+            };
+
             shellAliases = {
                 rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/.";
                 vim = "nvim";
+                # f = 'cd $(fd --type d --hidden \
+                #         --exclude .java \
+                #         --exclude .cargo \
+                #         --exclude .rustup \
+                #         --exclude .emacs.d \
+                #         --exclude .pex \
+                #         --exclude .cabal \
+                #         --exclude .dotnet \
+                #         --exclude .vscode \
+                #         --exclude .git \
+                #         --exclude node_module \
+                #         --exclude .cache \
+                #         --exclude .npm \
+                #         --exclude .mozilla \
+                #         --exclude .meteor \
+                #         --exclude .nv \
+                #         --exclude .jupyter \
+                #         --exclude .ssh \
+                #         --exclude .gnupg \
+                #         --exclude .nix-defexpr \
+                #         --exclude .powerlevel10k \
+                #         --exclude .docker \
+                #         --exclude .pki \
+                #         --exclude .ipython \
+                #         --exclude .steam \
+                #         --exclude .local \
+                #         --exclude .opam \
+                #         | fzf --preview="ls --color {}")';
             };
-            plugins = [
-            {
-                name = "powerlevel10k";
-                src = pkgs.zsh-powerlevel10k;
-                file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-            }
-            {
-                name = "powerlevel10k-config";
-                src = lib.cleanSource ./p10k-config;
-                file = "p10k.zsh";
-            }
-            ];
-            # zplug = {
-            #     enable = true;
-            #     plugins = [
-            #     { name = "zsh-users/zsh-autosuggestions"; }
-            #     { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
-            #     ];
-            # };
         };
     };
 
