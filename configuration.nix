@@ -26,6 +26,12 @@
         neofetch
         alacritty
         firefox
+        zsh
+    ];
+
+    fonts.packages = with pkgs; [
+        meslo-lgs-nf
+        (nerdfonts.override { fonts = ["JetBrainsMono" "Inconsolata"]; })
     ];
 
     # Set your time zone.
@@ -62,6 +68,9 @@
             defaultSession = "none+i3";
         };
     };
+
+    programs.zsh.enable = true;
+    users.defaultUserShell = pkgs.zsh;
 
 # Configure keymap in X11
 # services.xserver.xkb.layout = "us";
