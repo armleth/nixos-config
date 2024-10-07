@@ -27,6 +27,8 @@
         alacritty
         firefox
         zsh
+        gnome.gdm
+        sway
     ];
 
     fonts.packages = with pkgs; [
@@ -62,6 +64,8 @@
                 layout = "us";
                 options = "eurosign:e,caps:escape";
             };
+
+            displayManager.gdm.enable = true;
         };
 
         displayManager = {
