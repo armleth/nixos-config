@@ -27,8 +27,13 @@
         alacritty
         firefox
         zsh
-        gnome.gdm
-        sway
+        # gnome.gdm
+        # sway
+
+         grim # screenshot functionality
+    slurp # screenshot functionality
+    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    mako # notification system developed by swaywm maintainer
     ];
 
     fonts.packages = with pkgs; [
@@ -51,27 +56,35 @@
     services = {
         xserver = {
             enable = true;
-            windowManager.i3 = {
-                enable = true;
-                extraPackages = with pkgs; [
-                    dmenu
-                    i3status
-                    i3lock
-                ];
-            };
-
-            xkb = {
-                layout = "us";
-                options = "eurosign:e,caps:escape";
-            };
-
+    #         windowManager.i3 = {
+    #             enable = true;
+    #             extraPackages = with pkgs; [
+    #                 dmenu
+    #                 i3status
+    #                 i3lock
+    #             ];
+    #         };
+    #
+    #         xkb = {
+    #             layout = "us";
+    #             options = "eurosign:e,caps:escape";
+    #         };
+    #
             displayManager.gdm.enable = true;
-        };
-
-        displayManager = {
-            defaultSession = "none+i3";
+    #     };
+    #
+    #     displayManager = {
+    #         defaultSession = "none+i3";
         };
     };
+
+    services.gnome.gnome-keyring.enable = true;
+
+  # enable Sway window manager
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
     programs.zsh.enable = true;
     users.defaultUserShell = pkgs.zsh;
