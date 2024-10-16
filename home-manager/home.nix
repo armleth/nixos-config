@@ -43,22 +43,28 @@
 
         "org/gnome/shell/extensions/space-bar" = {
             "appearance/workspace-margin" = 1;
+            "behavior/show-empty-workspaces" = false;
         };
 
         "com/github/Ory0n/Resource_Monitor" = {
-            "diskspacestatus" = false;
-            "diskstatsstatus" = false;
-            "netethstatus" = false;
-            "netwlanstatus" = false;
-            "ramunit" = "perc";
-            "refreshtime" = 1;
+            diskspacestatus = false;
+            diskstatsstatus = false;
+            netethstatus = false;
+            netwlanstatus = false;
+            ramunit = "perc";
+            refreshtime = 1;
         };
 
         "com/ftpix/transparentbar" = {
-            "transparency" = 0;
+            transparency = 0;
         };
 
-        # Keybindings
+        # General keybindings
+        "org/gnome/desktop/wm/keybindings" = {
+            close = ["<Shift><Super>q"];
+        };
+
+        # Custom keybindings
         "org/gnome/settings-daemon/plugins/media-keys" = {
             custom-keybindings = [
                 "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
@@ -68,6 +74,12 @@
             binding = "<Super>Return";
             command = "alacritty";
             name = "open-terminal";
+        };
+
+        # Workspaces settings
+        "org/gnome/desktop/wm/preferences" = {
+            num-workspaces = 10;
+            workspaces-names = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "10"];
         };
     };
 
