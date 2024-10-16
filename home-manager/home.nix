@@ -12,21 +12,35 @@
         fd
     ];
 
-    xsession.windowManager.i3 = rec {
-        enable = true;
-        package = pkgs.i3-gaps;
-        
-        config = 
-        let
-            modifier = "Mod4";
-        in
-        {
-            inherit modifier;
-            keybindings = lib.mkOptionDefault {
-                "${modifier}+Return" = "exec alacritty";
-            };
+    # Gnome settings
+    dconf.enable = true;
+    dconf.settings = {
+        "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+        };
+        "org/gnome/shell" = {
+            disable-user-extensions = false;
+
+            enabled-extensions = [
+                "space-bar@luchrioh"
+                "transparent-top-bar@ftpix.com"
+            ];
+        };
+
+        # Keybindings
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+            custom-keybindings = [
+                "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+            ];
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+            binding = "<Super>Return";
+            command = "gnome-terminal";
+            name = "open-terminal";
         };
     };
+
 
     programs = {
         git = {

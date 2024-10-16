@@ -5,10 +5,9 @@
 { config, lib, pkgs, ... }:
 
 {
-    imports =
-        [ # Include the results of the hardware scan.
+    imports = [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
-        ];
+    ];
 
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.enable = true;
@@ -27,13 +26,8 @@
         alacritty
         firefox
         zsh
-        # gnome.gdm
-        # sway
-
-         grim # screenshot functionality
-    slurp # screenshot functionality
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system developed by swaywm maintainer
+        gnome.gnome-tweaks
+        gnome.dconf-editor
     ];
 
     fonts.packages = with pkgs; [
@@ -41,7 +35,7 @@
         (nerdfonts.override { fonts = ["JetBrainsMono" "Inconsolata"]; })
     ];
 
-    # Set your time zone.
+    # Time zone.
     time.timeZone = "Europe/Paris";
 
     # Users
@@ -56,45 +50,37 @@
     services = {
         xserver = {
             enable = true;
-    #         windowManager.i3 = {
-    #             enable = true;
-    #             extraPackages = with pkgs; [
-    #                 dmenu
-    #                 i3status
-    #                 i3lock
-    #             ];
-    #         };
-    #
-    #         xkb = {
-    #             layout = "us";
-    #             options = "eurosign:e,caps:escape";
-    #         };
-    #
-            displayManager.gdm.enable = true;
-    #     };
-    #
-    #     displayManager = {
-    #         defaultSession = "none+i3";
+            xkb = {
+                layout = "us";
+                options = "caps:escape";
+            };
+
+            displayManager.gdm = {
+                enable = true;
+                wayland = true;
+            };
+            desktopManager.gnome.enable = true;
         };
+
+        gnome.gnome-keyring.enable = true;
     };
+    
+    programs.dconf.enable = true;
 
-    services.gnome.gnome-keyring.enable = true;
-
-  # enable Sway window manager
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
+    environment.gnome.excludePackages = (with pkgs; [
+            gnome-photos
+            gnome-tour
+    ]) ++ (with pkgs.gnome; [
+        cheese # webcam tool
+        gnome-music
+        yelp # Help view
+        gnome-contacts
+        gnome-initial-setup
+    ]);
 
     programs.zsh.enable = true;
     users.defaultUserShell = pkgs.zsh;
 
-# Configure keymap in X11
-# services.xserver.xkb.layout = "us";
-# services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-# Enable CUPS to print documents.
-# services.printing.enable = true;
 
 # Enable sound.
 # hardware.pulseaudio.enable = true;
@@ -106,23 +92,6 @@
 
 # Enable touchpad support (enabled default in most desktopManager).
 # services.libinput.enable = true;
-
-# Define a user account. Don't forget to set a password with ‘passwd’.
-# users.users.alice = {
-#   isNormalUser = true;
-#   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-#   packages = with pkgs; [
-#     firefox
-#     tree
-#   ];
-# };
-
-# List packages installed in system profile. To search, run:
-# $ nix search wget
-# environment.systemPackages = with pkgs; [
-#   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-#   wget
-# ];
 
 # Some programs need SUID wrappers, can be configured further or are
 # started in user sessions.
@@ -137,35 +106,7 @@
 # Enable the OpenSSH daemon.
 # services.openssh.enable = true;
 
-# Open ports in the firewall.
-# networking.firewall.allowedTCPPorts = [ ... ];
-# networking.firewall.allowedUDPPorts = [ ... ];
-# Or disable the firewall altogether.
-# networking.firewall.enable = false;
-
-# Copy the NixOS configuration file and link it from the resulting system
-# (/run/current-system/configuration.nix). This is useful in case you
-# accidentally delete configuration.nix.
-# system.copySystemConfiguration = true;
-
-# This option defines the first version of NixOS you have installed on this particular machine,
-# and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-#
-# Most users should NEVER change this value after the initial install, for any reason,
-# even if you've upgraded your system to a new NixOS release.
-#
-# This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-# so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-# to actually do that.
-#
-# This value being lower than the current NixOS release does NOT mean your system is
-# out of date, out of support, or vulnerable.
-#
-# Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-# and migrated your data accordingly.
-#
-# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-    system.stateVersion = "24.05"; # Did you read the comment?
+    system.stateVersion = "24.05"; # Dont change - represents the first installed NixOS version
 
 }
 
