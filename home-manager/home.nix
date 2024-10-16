@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, pkgsUnstable, ... }:
 
 {
     home = {
@@ -6,25 +6,56 @@
         homeDirectory = "/home/armleth";
     };
 
-    home.packages = with pkgs; [
-        ripgrep
-        fzf
-        fd
+    home.packages = [
+        pkgs.ripgrep
+        pkgs.fzf
+        pkgs.fd
+
+        # gnome extensions from stable branch
+        pkgs.gnomeExtensions.space-bar
+        pkgs.gnomeExtensions.transparent-top-bar-adjustable-transparency
+        pkgs.gnomeExtensions.no-titlebar-when-maximized
+
+        # gnome extensions from unstable branch - generally because of gnome version conflicts
+        pkgsUnstable.gnomeExtensions.resource-monitor
     ];
 
     # Gnome settings
     dconf.enable = true;
     dconf.settings = {
+        # General settings
         "org/gnome/desktop/interface" = {
             color-scheme = "prefer-dark";
         };
+
+        # Extensions
         "org/gnome/shell" = {
             disable-user-extensions = false;
+            disable-extension-version-validation = true;
 
             enabled-extensions = [
                 "space-bar@luchrioh"
+                "Resource_Monitor@Ory0n"
                 "transparent-top-bar@ftpix.com"
+                "no-titlebar-when-maximized@alec.ninja"
             ];
+        };
+
+        "org/gnome/shell/extensions/space-bar" = {
+            "appearance/workspace-margin" = 1;
+        };
+
+        "com/github/Ory0n/Resource_Monitor" = {
+            "diskspacestatus" = false;
+            "diskstatsstatus" = false;
+            "netethstatus" = false;
+            "netwlanstatus" = false;
+            "ramunit" = "perc";
+            "refreshtime" = 1;
+        };
+
+        "com/ftpix/transparentbar" = {
+            "transparency" = 0;
         };
 
         # Keybindings
@@ -33,10 +64,9 @@
                 "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
             ];
         };
-
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
             binding = "<Super>Return";
-            command = "gnome-terminal";
+            command = "alacritty";
             name = "open-terminal";
         };
     };

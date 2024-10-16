@@ -81,7 +81,6 @@
     programs.zsh.enable = true;
     users.defaultUserShell = pkgs.zsh;
 
-
 # Enable sound.
 # hardware.pulseaudio.enable = true;
 # OR
@@ -91,7 +90,7 @@
 # };
 
 # Enable touchpad support (enabled default in most desktopManager).
-# services.libinput.enable = true;
+    services.libinput.enable = true;
 
 # Some programs need SUID wrappers, can be configured further or are
 # started in user sessions.
