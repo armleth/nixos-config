@@ -21,24 +21,24 @@
         system = "x86_64-linux";
     in {
         nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
-                inherit system;
-                
-                modules = [
-                    ./configuration.nix
-                    home-manager.nixosModules.home-manager
-                    {
-                        home-manager.useGlobalPkgs = true;
-                        home-manager.useUserPackages = true;
-                        home-manager.users.armleth = import ./home-manager/home.nix;
+            inherit system;
 
-                        home-manager.extraSpecialArgs = {
-                            pkgsUnstable = import nixpkgsUnstable {
-                                inherit system;
-                                config.allowUnfree = true;
-                            };
+            modules = [
+                ./configuration.nix
+                home-manager.nixosModules.home-manager
+                {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.users.armleth = import ./home-manager/home.nix;
+
+                    home-manager.extraSpecialArgs = {
+                        pkgsUnstable = import nixpkgsUnstable {
+                            inherit system;
+                            config.allowUnfree = true;
                         };
-                    }
-                ];
+                    };
+                }
+            ];
         };
     };
 }

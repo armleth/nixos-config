@@ -23,9 +23,6 @@
         neovim
         htop
         neofetch
-        alacritty
-        firefox
-        zsh
         gnome.gnome-tweaks
         gnome.dconf-editor
     ];
@@ -71,9 +68,9 @@
             gnome-photos
             gnome-tour
     ]) ++ (with pkgs.gnome; [
-        cheese # webcam tool
+        cheese
         gnome-music
-        yelp # Help view
+        yelp
         gnome-contacts
         gnome-initial-setup
     ]);

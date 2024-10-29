@@ -22,7 +22,11 @@
 
     # Gnome settings
     dconf.enable = true;
-    dconf.settings = {
+    dconf.settings =
+    let 
+        workspaces = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "10"];
+    in
+    {
         # General settings
         "org/gnome/desktop/interface" = {
             color-scheme = "prefer-dark";
@@ -62,7 +66,26 @@
         # General keybindings
         "org/gnome/desktop/wm/keybindings" = {
             close = ["<Shift><Super>q"];
-        };
+            maximize = ["<Super>Up" "<Super>w"];
+        } // (
+            builtins.listToAttrs (
+                (
+                    builtins.map
+                    (workspace_number: lib.attrsets.nameValuePair
+                        "switch-to-workspace-${workspace_number}"
+                        ["<Super>${workspace_number}"]
+                    )
+                    workspaces
+                ) ++ (
+                    builtins.map
+                    (workspace_number: lib.attrsets.nameValuePair
+                        "move-to-workspace-${workspace_number}"
+                        ["<Super><Shift>${workspace_number}"]
+                    )
+                    workspaces
+                )
+            )
+        );
 
         # Custom keybindings
         "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -79,7 +102,7 @@
         # Workspaces settings
         "org/gnome/desktop/wm/preferences" = {
             num-workspaces = 10;
-            workspaces-names = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "10"];
+            workspaces-names = workspaces;
         };
     };
 
@@ -88,7 +111,34 @@
         git = {
             enable = true;
             userName = "Armleth";
-            userEmail = "armand.thibaudon@gmail.com";
+            userEmail = "armleth@proton.me";
+        };
+
+        firefox = {
+            enable = true;
+
+            policies = {
+                ExtensionSettings = {
+                    # blocks all addons except the ones specified below
+                    "*".installation_mode = "blocked"; 
+
+                    # ublock origin
+                    "uBlock0@raymondhill.net" = {
+                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+                        installation_mode = "force_installed";
+                    };
+
+                    # languages packs
+                    "langpack-en-US@firefox.mozilla.org" = {
+                        installation_mode = "normal_installed";
+                        install_url = "https://releases.mozilla.org/pub/firefox/releases/${config.programs.firefox.package.version}/linux-x86_64/xpi/en-US.xpi";
+                    };
+                    "langpack-fr@firefox.mozilla.org" = {
+                        installation_mode = "normal_installed";
+                        install_url = "https://releases.mozilla.org/pub/firefox/releases/${config.programs.firefox.package.version}/linux-x86_64/xpi/fr.xpi";
+                    };
+                };
+            };
         };
 
         alacritty = {
