@@ -15,6 +15,7 @@
         pkgs.gnomeExtensions.space-bar
         pkgs.gnomeExtensions.transparent-top-bar-adjustable-transparency
         pkgs.gnomeExtensions.no-titlebar-when-maximized
+        pkgs.gnomeExtensions.privacy-settings-menu
 
         # gnome extensions from unstable branch - generally because of gnome version conflicts
         pkgsUnstable.gnomeExtensions.resource-monitor
@@ -42,6 +43,7 @@
                 "Resource_Monitor@Ory0n"
                 "transparent-top-bar@ftpix.com"
                 "no-titlebar-when-maximized@alec.ninja"
+                "PrivacyMenu@stuarthayhurst"
             ];
         };
 
