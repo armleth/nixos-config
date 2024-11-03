@@ -31,6 +31,9 @@
         # General settings
         "org/gnome/desktop/interface" = {
             color-scheme = "prefer-dark";
+
+            # prevent having white square as cursor when switching wm
+            cursor-theme = "Adwaita";
         };
 
         # Extensions
