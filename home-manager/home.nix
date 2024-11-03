@@ -40,9 +40,13 @@
             cursor-theme = "Adwaita";
         };
 
-        "org/gnome/desktop/background" = {
-            picture-uri = (root + /statics/wallpapers/Big_Sur-timed.xml);
-            picture-uri-dark = (root + /statics/wallpapers/Big_Sur-timed.xml);
+        "org/gnome/desktop/background" = 
+        let
+            big_sur = (root + /statics/wallpapers/Big_Sur-timed.xml);
+            nix_dark = (root + /statics/wallpapers/nix-wallpaper-simple-dark-gray.png);
+        in {
+            picture-uri = "file://${nix_dark}";
+            picture-uri-dark = "file://${nix_dark}";
 
             # nixos base version
             # primary-color = "#023c88";
