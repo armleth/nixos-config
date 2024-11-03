@@ -58,7 +58,10 @@
             desktopManager.gnome.enable = true;
         };
 
-        gnome.gnome-keyring.enable = true;
+        gnome = {
+            gnome-keyring.enable = true;
+            # gnome-browser-connector.enable = true;
+        };
     };
     
     programs.dconf.enable = true;

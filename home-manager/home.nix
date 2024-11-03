@@ -163,6 +163,18 @@
                         installation_mode = "force_installed";
                     };
 
+                    # GNOME Shell integration
+                    "chrome-gnome-shell@gnome.org" = {
+                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/gnome-shell-integration/latest.xpi";
+                        installation_mode = "force_installed";
+                    };
+
+                    # infinity pegasus
+                    "{9a066f3e-5093-471f-9495-fd8618959c81}" = {
+                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/infinity-pegasus/latest.xpi";
+                        installation_mode = "force_installed";
+                    };
+
                     # languages packs
                     "langpack-en-US@firefox.mozilla.org" = {
                         installation_mode = "normal_installed";
@@ -172,6 +184,24 @@
                         installation_mode = "normal_installed";
                         install_url = "https://releases.mozilla.org/pub/firefox/releases/${config.programs.firefox.package.version}/linux-x86_64/xpi/fr.xpi";
                     };
+                };
+
+                Preferences =
+                let
+                    lock-false = {
+                        Value = false;
+                        Status = "locked";
+                    };
+                    lock-true = {
+                        Value = true;
+                        Status = "locked";
+                    };
+                in {
+                    "extensions.pocket.enabled" = lock-false;
+                    "extensions.screenshots.disabled" = lock-true;
+                    "browser.newtabpage.activity-stream.showSponsored" = lock-false;
+                    "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
+                    "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
                 };
             };
         };
