@@ -36,6 +36,7 @@
                             inherit system;
                             config.allowUnfree = true;
                         };
+                        root = ./.;
                     };
                 }
             ];

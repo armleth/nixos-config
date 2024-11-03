@@ -1,4 +1,4 @@
-{ lib, config, pkgs, pkgsUnstable, ... }:
+{ lib, config, pkgs, pkgsUnstable, root, ... }:
 
 {
     home = {
@@ -31,9 +31,22 @@
         # General settings
         "org/gnome/desktop/interface" = {
             color-scheme = "prefer-dark";
+            clock-show-weekday = true;
+            show-battery-percentage = true;
+            enable-animations = false;
+            enable-hot-corners = false;
 
             # prevent having white square as cursor when switching wm
             cursor-theme = "Adwaita";
+        };
+
+        "org/gnome/desktop/background" = {
+            picture-uri = (root + /statics/wallpapers/Big_Sur-timed.xml);
+            picture-uri-dark = (root + /statics/wallpapers/Big_Sur-timed.xml);
+
+            # nixos base version
+            # primary-color = "#023c88";
+            # secondary-color = "#5789ca";
         };
 
         # Extensions
@@ -130,12 +143,6 @@
         };
         "org/gnome/shell/window-switcher" = {
             current-workspace-only = false;
-        };
-        "org/gnome/desktop/interface" = {
-            clock-show-weekday = true;
-            show-battery-percentage = true;
-            enable-animations = false;
-            enable-hot-corners = false;
         };
 
         # Keyboard settings
