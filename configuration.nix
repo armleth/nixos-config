@@ -80,29 +80,8 @@
     programs.zsh.enable = true;
     users.defaultUserShell = pkgs.zsh;
 
-# Enable sound.
-# hardware.pulseaudio.enable = true;
-# OR
-# services.pipewire = {
-#   enable = true;
-#   pulse.enable = true;
-# };
-
-# Enable touchpad support (enabled default in most desktopManager).
+    # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
-
-# Some programs need SUID wrappers, can be configured further or are
-# started in user sessions.
-# programs.mtr.enable = true;
-# programs.gnupg.agent = {
-#   enable = true;
-#   enableSSHSupport = true;
-# };
-
-# List services that you want to enable:
-
-# Enable the OpenSSH daemon.
-# services.openssh.enable = true;
 
     system.stateVersion = "24.05"; # Dont change - represents the first installed NixOS version
 

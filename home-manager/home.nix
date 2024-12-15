@@ -33,7 +33,7 @@
             color-scheme = "prefer-dark";
             clock-show-weekday = true;
             show-battery-percentage = true;
-            enable-animations = false;
+            enable-animations = true;
             enable-hot-corners = false;
 
             # prevent having white square as cursor when switching wm
