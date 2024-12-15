@@ -25,6 +25,7 @@
         neofetch
         gnome.gnome-tweaks
         gnome.dconf-editor
+        discord
     ];
 
     fonts.packages = with pkgs; [
@@ -34,6 +35,8 @@
 
     # Time zone.
     time.timeZone = "Europe/Paris";
+
+    nixpkgs.config.allowUnfree = true;
 
     # Users
     users.users.armleth = {
