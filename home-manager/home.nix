@@ -10,6 +10,7 @@
         pkgs.ripgrep
         pkgs.fzf
         pkgs.fd
+        pkgs.slack
 
         # gnome extensions from stable branch
         pkgs.gnomeExtensions.space-bar
@@ -175,6 +176,7 @@
                     "uBlock0@raymondhill.net" = {
                         install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
                         installation_mode = "force_installed";
+                        default_area = "navbar";
                     };
 
                     # GNOME Shell integration
@@ -187,6 +189,13 @@
                     "{9a066f3e-5093-471f-9495-fd8618959c81}" = {
                         install_url = "https://addons.mozilla.org/firefox/downloads/latest/infinity-pegasus/latest.xpi";
                         installation_mode = "force_installed";
+                    };
+
+                    # bitwarden
+                    "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+                        installation_mode = "force_installed";
+                        default_area = "navbar";
                     };
 
                     # languages packs
@@ -258,34 +267,34 @@
             shellAliases = {
                 rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/.";
                 vim = "nvim";
-                # f = 'cd $(fd --type d --hidden \
-                #         --exclude .java \
-                #         --exclude .cargo \
-                #         --exclude .rustup \
-                #         --exclude .emacs.d \
-                #         --exclude .pex \
-                #         --exclude .cabal \
-                #         --exclude .dotnet \
-                #         --exclude .vscode \
-                #         --exclude .git \
-                #         --exclude node_module \
-                #         --exclude .cache \
-                #         --exclude .npm \
-                #         --exclude .mozilla \
-                #         --exclude .meteor \
-                #         --exclude .nv \
-                #         --exclude .jupyter \
-                #         --exclude .ssh \
-                #         --exclude .gnupg \
-                #         --exclude .nix-defexpr \
-                #         --exclude .powerlevel10k \
-                #         --exclude .docker \
-                #         --exclude .pki \
-                #         --exclude .ipython \
-                #         --exclude .steam \
-                #         --exclude .local \
-                #         --exclude .opam \
-                #         | fzf --preview="ls --color {}")';
+                f = "cd $(fd --type d --hidden \
+                        --exclude .java \
+                        --exclude .cargo \
+                        --exclude .rustup \
+                        --exclude .emacs.d \
+                        --exclude .pex \
+                        --exclude .cabal \
+                        --exclude .dotnet \
+                        --exclude .vscode \
+                        --exclude .git \
+                        --exclude node_module \
+                        --exclude .cache \
+                        --exclude .npm \
+                        --exclude .mozilla \
+                        --exclude .meteor \
+                        --exclude .nv \
+                        --exclude .jupyter \
+                        --exclude .ssh \
+                        --exclude .gnupg \
+                        --exclude .nix-defexpr \
+                        --exclude .powerlevel10k \
+                        --exclude .docker \
+                        --exclude .pki \
+                        --exclude .ipython \
+                        --exclude .steam \
+                        --exclude .local \
+                        --exclude .opam \
+                        | fzf --preview='ls --color {}')";
             };
         };
     };
