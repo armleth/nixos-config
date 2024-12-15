@@ -49,7 +49,6 @@
             enable = true;
             xkb = {
                 layout = "us";
-                options = "caps:escape,altwin:swap_lalt_lwin";
             };
 
             displayManager.gdm = {
