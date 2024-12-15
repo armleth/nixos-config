@@ -151,7 +151,7 @@
 
         # Keyboard settings
         "org/gnome/desktop/input-sources" = {
-            xkb-options = ["caps:escape", "altwin:swap_lalt_lwin"];
+            xkb-options = ["caps:escape,altwin:swap_lalt_lwin"];
         };
     };
 
