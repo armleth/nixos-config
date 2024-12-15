@@ -62,6 +62,11 @@
             gnome-keyring.enable = true;
             # gnome-browser-connector.enable = true;
         };
+
+        displayManager.autoLogin = {
+            enable = true;
+            user = "armleth";
+        };
     };
     
     programs.dconf.enable = true;
@@ -82,6 +87,10 @@
 
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
+
+    # Workaround to make gmd autologin work
+    systemd.services."getty@tty1".enable = false;
+    systemd.services."autovt@tty1".enable = false;
 
     system.stateVersion = "24.05"; # Dont change - represents the first installed NixOS version
 
