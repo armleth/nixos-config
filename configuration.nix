@@ -49,6 +49,7 @@
             enable = true;
             xkb = {
                 layout = "us";
+                options = "caps:escape,altwin:swap_lalt_lwin";
             };
 
             displayManager.gdm = {
@@ -93,6 +94,5 @@
     systemd.services."autovt@tty1".enable = false;
 
     system.stateVersion = "24.05"; # Dont change - represents the first installed NixOS version
-
 }
 
