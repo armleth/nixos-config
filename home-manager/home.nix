@@ -11,6 +11,13 @@
         pkgs.fzf
         pkgs.fd
         pkgs.slack
+        pkgs.vscode
+        pkgs.chromium
+        pkgs.tmux
+        pkgs.gnumake
+        pkgs.gcc
+        pkgs.criterion
+        pkgs.clang-tools
 
         # gnome extensions from stable branch
         pkgs.gnomeExtensions.space-bar
@@ -161,7 +168,7 @@
         git = {
             enable = true;
             userName = "Armleth";
-            userEmail = "armleth@proton.me";
+            userEmail = "armand.thibaudon@epita.fr";
         };
 
         firefox = {

@@ -10,8 +10,11 @@
     ];
 
     # Use the systemd-boot EFI boot loader.
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+        timeout = 20;
+    };
 
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;
@@ -43,7 +46,7 @@
         isNormalUser = true;
         home = "/home/armleth";
         description = "Armleth";
-        extraGroups = ["wheel" "networkmanager"];
+        extraGroups = ["wheel" "networkmanager" "docker"];
     };
 
     # Enable the X11 windowing system.
@@ -94,6 +97,8 @@
     # Workaround to make gmd autologin work
     systemd.services."getty@tty1".enable = false;
     systemd.services."autovt@tty1".enable = false;
+
+    virtualisation.docker.enable = true;
 
     system.stateVersion = "24.05"; # Dont change - represents the first installed NixOS version
 }
