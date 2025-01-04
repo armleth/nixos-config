@@ -2,9 +2,23 @@
     programs = {
         fish = {
             enable = true;
+
             interactiveShellInit = ''
                 set fish_greeting # Disable greeting
                 '';
+
+            shellInit = ''
+                fish_vi_key_bindings
+            '';
+
+            functions = {
+                fish_user_key_bindings = ''
+                    for mode in insert default visual
+                        bind -M $mode \cf  forward-char
+                    end
+                '';
+            };
+
             shellAliases = {
                 rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/.";
                 vim = "nvim";

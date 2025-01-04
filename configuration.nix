@@ -29,6 +29,7 @@
         gnome.gnome-tweaks
         gnome.dconf-editor
         discord
+        wl-clipboard
     ];
 
     fonts.packages = with pkgs; [
