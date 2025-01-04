@@ -29,7 +29,9 @@
         pkgsUnstable.gnomeExtensions.resource-monitor
     ];
 
-    dconf = import ./dconf.nix;
+    imports = [
+        ./dconf.nix
+    ];
 
     programs = {
         git = {
