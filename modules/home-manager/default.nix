@@ -13,30 +13,28 @@
 
         packages = with pkgs; [
             ripgrep
-                fzf
-                fd
-                slack
-                vscode
-                chromium
-                tmux
-                gnumake
-                gcc
-                criterion
-                clang-tools
-                neofetch
+            fzf
+            fd
+            slack
+            vscode
+            chromium
+            tmux
+            gnumake
+            gcc
+            criterion
+            clang-tools
+            neofetch
 
-                # gnome extensions from stable branch
-                gnomeExtensions.space-bar
-                gnomeExtensions.transparent-top-bar-adjustable-transparency
-                gnomeExtensions.no-titlebar-when-maximized
-                gnomeExtensions.privacy-settings-menu
+            # Gnome extensions from stable branch
+            gnomeExtensions.space-bar
+            gnomeExtensions.transparent-top-bar-adjustable-transparency
+            gnomeExtensions.no-titlebar-when-maximized
+            gnomeExtensions.privacy-settings-menu
         ] ++ (with pkgsUnstable; [
-                # gnome extensions from unstable branch - generally because of gnome version conflicts
-                gnomeExtensions.resource-monitor
+            # Gnome extensions from unstable branch - generally because of gnome version conflicts
+            gnomeExtensions.resource-monitor
         ]);
     };
-
-
 
     programs = {
         git = {
