@@ -42,11 +42,17 @@
     nixpkgs.config.allowUnfree = true;
 
     # Users
-    users.users.armleth = {
-        isNormalUser = true;
-        home = "/home/armleth";
-        description = "Armleth";
-        extraGroups = ["wheel" "networkmanager" "docker"];
+    # users.defaultUserShell = pkgs.fish;
+    users.users = {
+        root.shell = pkgs.fish;
+
+        armleth = {
+            isNormalUser = true;
+            home = "/home/armleth";
+            shell = pkgs.fish;
+            description = "Armleth";
+            extraGroups = ["wheel" "networkmanager" "docker"];
+        };
     };
 
     # Enable the X11 windowing system.
@@ -73,6 +79,16 @@
             enable = true;
             user = "armleth";
         };
+
+        pipewire = {
+            enable = true;
+
+            alsa = {
+                enable = true;
+                support32Bit = true;
+            };
+            pulse.enable = true;
+        };
     };
     
     programs.dconf.enable = true;
@@ -88,11 +104,29 @@
         gnome-initial-setup
     ]);
 
-    programs.zsh.enable = true;
-    users.defaultUserShell = pkgs.zsh;
+    programs = {
+        zsh.enable = true;
+        fish.enable = true;
+    };
 
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
+
+    hardware.pulseaudio.enable = false;
+    hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+    };
+
+    # Better audio quality
+    services.pipewire.wireplumber.extraConfig = {
+        "monitor.bluez.properties" = {
+            "bluez5.enable-sbc-xq" = true;
+            "bluez5.enable-msbc" = true;
+            "bluez5.enable-hw-volume" = true;
+            "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+        };
+    };
 
     # Workaround to make gmd autologin work
     systemd.services."getty@tty1".enable = false;

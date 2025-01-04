@@ -29,7 +29,7 @@
                 {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.armleth = import ./home-manager/home.nix;
+                    home-manager.users.armleth = import ./modules/home-manager;
 
                     home-manager.extraSpecialArgs = {
                         pkgsUnstable = import nixpkgsUnstable {

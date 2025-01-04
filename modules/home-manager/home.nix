@@ -239,7 +239,8 @@
         alacritty = {
             enable = true;
             settings = {
-                shell.program = "${pkgs.zsh}/bin/zsh";
+                # shell.program = "${pkgs.zsh}/bin/zsh";
+                shell.program = "${pkgs.fish}/bin/fish";
                 font = {
                     size = 14;
 
@@ -247,6 +248,45 @@
                     bold.family = "MesloLGS NF";
                     italic.family = "MesloLGS NF";
                 };
+            };
+        };
+
+        fish = {
+            enable = true;
+            interactiveShellInit = ''
+                set fish_greeting # Disable greeting
+                '';
+            shellAliases = {
+                rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/.";
+                vim = "nvim";
+                # f = "cd $(fd --type d --hidden \
+                #         --exclude .java \
+                #         --exclude .cargo \
+                #         --exclude .rustup \
+                #         --exclude .emacs.d \
+                #         --exclude .pex \
+                #         --exclude .cabal \
+                #         --exclude .dotnet \
+                #         --exclude .vscode \
+                #         --exclude .git \
+                #         --exclude node_module \
+                #         --exclude .cache \
+                #         --exclude .npm \
+                #         --exclude .mozilla \
+                #         --exclude .meteor \
+                #         --exclude .nv \
+                #         --exclude .jupyter \
+                #         --exclude .ssh \
+                #         --exclude .gnupg \
+                #         --exclude .nix-defexpr \
+                #         --exclude .powerlevel10k \
+                #         --exclude .docker \
+                #         --exclude .pki \
+                #         --exclude .ipython \
+                #         --exclude .steam \
+                #         --exclude .local \
+                #         --exclude .opam \
+                #         | fzf --preview='ls --color {}')";
             };
         };
 
