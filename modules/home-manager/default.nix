@@ -1,39 +1,42 @@
 { lib, config, pkgs, pkgsUnstable, root, ... }:
 
 {
-    home = {
-        username = "armleth";
-        homeDirectory = "/home/armleth";
-    };
-
-    home.packages = [
-        pkgs.ripgrep
-        pkgs.fzf
-        pkgs.fd
-        pkgs.slack
-        pkgs.vscode
-        pkgs.chromium
-        pkgs.tmux
-        pkgs.gnumake
-        pkgs.gcc
-        pkgs.criterion
-        pkgs.clang-tools
-
-        # gnome extensions from stable branch
-        pkgs.gnomeExtensions.space-bar
-        pkgs.gnomeExtensions.transparent-top-bar-adjustable-transparency
-        pkgs.gnomeExtensions.no-titlebar-when-maximized
-        pkgs.gnomeExtensions.privacy-settings-menu
-
-        # gnome extensions from unstable branch - generally because of gnome version conflicts
-        pkgsUnstable.gnomeExtensions.resource-monitor
-    ];
-
     imports = [
         ./dconf.nix
         ./firefox.nix
         ./shell.nix
     ];
+
+    home = {
+        username = "armleth";
+        homeDirectory = "/home/armleth";
+
+        packages = with pkgs; [
+            ripgrep
+                fzf
+                fd
+                slack
+                vscode
+                chromium
+                tmux
+                gnumake
+                gcc
+                criterion
+                clang-tools
+                neofetch
+
+                # gnome extensions from stable branch
+                gnomeExtensions.space-bar
+                gnomeExtensions.transparent-top-bar-adjustable-transparency
+                gnomeExtensions.no-titlebar-when-maximized
+                gnomeExtensions.privacy-settings-menu
+        ] ++ (with pkgsUnstable; [
+                # gnome extensions from unstable branch - generally because of gnome version conflicts
+                gnomeExtensions.resource-monitor
+        ]);
+    };
+
+
 
     programs = {
         git = {
