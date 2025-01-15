@@ -24,6 +24,10 @@
             criterion
             clang-tools
             neofetch
+            lua-language-server
+            nil
+            texliveFull
+            calibre
 
             # Gnome extensions from stable branch
             gnomeExtensions.space-bar
@@ -33,6 +37,9 @@
         ] ++ (with pkgsUnstable; [
             # Gnome extensions from unstable branch - generally because of gnome version conflicts
             gnomeExtensions.resource-monitor
+
+            # with pkgs, there is major issues with noice.nvim
+            neovim
         ]);
     };
 
