@@ -28,6 +28,7 @@
             nil
             texliveFull
             calibre
+            nixd
 
             # Gnome extensions from stable branch
             gnomeExtensions.space-bar
