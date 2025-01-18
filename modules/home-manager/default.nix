@@ -11,7 +11,7 @@
         username = "armleth";
         homeDirectory = "/home/armleth";
 
-        packages = with pkgs; [
+        packages = (with pkgs; [
             ripgrep
             fzf
             fd
@@ -29,18 +29,16 @@
             texliveFull
             calibre
             nixd
+            neovim
 
             # Gnome extensions from stable branch
             gnomeExtensions.space-bar
             gnomeExtensions.transparent-top-bar-adjustable-transparency
             gnomeExtensions.no-titlebar-when-maximized
             gnomeExtensions.privacy-settings-menu
-        ] ++ (with pkgsUnstable; [
+        ]) ++ (with pkgsUnstable; [
             # Gnome extensions from unstable branch - generally because of gnome version conflicts
             gnomeExtensions.resource-monitor
-
-            # with pkgs, there is major issues with noice.nvim
-            neovim
         ]);
     };
 

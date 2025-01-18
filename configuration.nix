@@ -21,8 +21,8 @@
         git
         htop
         neofetch
-        gnome.gnome-tweaks
-        gnome.dconf-editor
+        gnome-tweaks
+        dconf-editor
         discord
         wl-clipboard
         xsel
@@ -90,16 +90,15 @@
     
     programs.dconf.enable = true;
 
-    environment.gnome.excludePackages = (with pkgs; [
+    environment.gnome.excludePackages = with pkgs; [
             gnome-photos
             gnome-tour
-    ]) ++ (with pkgs.gnome; [
-        cheese
-        gnome-music
-        yelp
-        gnome-contacts
-        gnome-initial-setup
-    ]);
+            cheese
+            gnome-music
+            yelp
+            gnome-contacts
+            gnome-initial-setup
+    ];
 
     programs = {
         zsh.enable = true;
