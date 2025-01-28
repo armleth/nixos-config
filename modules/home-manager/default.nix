@@ -12,6 +12,7 @@
     ./dconf.nix
     ./firefox.nix
     ./shell.nix
+    ./tmux.nix
   ];
 
   home = {
