@@ -39,6 +39,7 @@
         calibre
         nixd
         neovim
+        jetbrains.idea-ultimate
 
         # Gnome extensions from stable branch
         gnomeExtensions.space-bar
