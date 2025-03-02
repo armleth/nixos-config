@@ -30,8 +30,8 @@
         # Git aliases
         gco = "git checkout";
         gst = "git status";
-        ls = "eza --icons";
-        tree = "eza --tree --icons";
+        ls = "eza --color=always --color-scale=all --color-scale-mode=gradient --icons=always --group-directories-first";
+        tree = "eza --color=always --color-scale=all --color-scale-mode=gradient --icons=always --group-directories-first --tree";
       };
 
       plugins = [
