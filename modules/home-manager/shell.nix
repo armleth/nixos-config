@@ -35,15 +35,15 @@
       };
 
       plugins = [
-        {
-          name = "fzf";
-          src = pkgs.fetchFromGitHub {
-            "owner" = "Aloxaf";
-            "repo" = "fzf-tab";
-            "rev" = "6aced3f35def61c5edf9d790e945e8bb4fe7b305";
-            "hash" = "sha256-EWMeslDgs/DWVaDdI9oAS46hfZtp4LHTRY8TclKTNK8=";
-          };
-        }
+        # {
+        #   name = "transcient";
+        #   src = pkgs.fetchFromGitHub {
+        #       "owner" = "zzhaolei";
+        #       "repo" = "transient.fish";
+        #       "rev" = "7091a1ef574e4c2d16779e59d37ceb567128c787";
+        #       "hash" = "sha256-rZqMQiVGEEYus5MxkpFhaXnjVStmsjWkGly4B6bjcks=";
+        #   };
+        # }
       ];
     };
 
