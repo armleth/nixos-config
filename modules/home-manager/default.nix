@@ -40,6 +40,12 @@
         nixd
         neovim
         jetbrains.idea-ultimate
+        jdk21_headless
+        bat
+        yaml-cpp
+        cmake
+        vlc
+        eza
 
         # Gnome extensions from stable branch
         gnomeExtensions.space-bar
