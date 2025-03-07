@@ -40,7 +40,8 @@
         nixd
         neovim
         jetbrains.idea-ultimate
-        jdk21_headless
+        # jdk21_headless
+        jdk17_headless
         bat
         yaml-cpp
         cmake
@@ -60,6 +61,11 @@
   };
 
   programs = {
+    java = {
+        package = pkgs.jdk17_headless;
+        enable = true;
+    };
+
     git = {
       enable = true;
       userName = "Armleth";
