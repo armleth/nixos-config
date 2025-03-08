@@ -31,6 +31,10 @@
           cursor-theme = "Adwaita";
         };
 
+        "org/gnome/mutter" = {
+          workspaces-only-on-primary = true;
+        };
+
         "org/gnome/desktop/background" =
           let
             big_sur = (root + /statics/wallpapers/Big_Sur-timed.xml);
