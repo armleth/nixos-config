@@ -12,10 +12,14 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    timeout = 20;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 20;
+    };
+
+    supportedFilesystems = [ "ntfs" ];
   };
 
   networking.hostName = "nixos";
