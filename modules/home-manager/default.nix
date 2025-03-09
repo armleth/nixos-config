@@ -53,6 +53,7 @@
         gnomeExtensions.transparent-top-bar-adjustable-transparency
         gnomeExtensions.no-titlebar-when-maximized
         gnomeExtensions.privacy-settings-menu
+        gnomeExtensions.bluetooth-battery-meter
       ])
       ++ (with pkgsUnstable; [
         # Gnome extensions from unstable branch - generally because of gnome version conflicts

@@ -60,6 +60,7 @@
             "transparent-top-bar@ftpix.com"
             "no-titlebar-when-maximized@alec.ninja"
             "PrivacyMenu@stuarthayhurst"
+            "Bluetooth-Battery-Meter@maniacx.github.com"
           ];
         };
 
@@ -68,6 +69,11 @@
           "behavior/show-empty-workspaces" = false;
           "behavior/toggle-overview" = false;
           "shortcuts/open-menu" = [ "<Shift><Control>m" ];
+        };
+
+        "org/gnome/shell/extensions/Bluetooth-Battery-Meter" = {
+            enable-battery-level-text = true;
+            enable-battery-indicator-text = true;
         };
 
         "com/github/Ory0n/Resource_Monitor" = {
