@@ -25,6 +25,7 @@
         rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/.";
         vi = "nvim";
         vim = "nvim";
+        atmt = "poetry run atmt";
         f = "cd $(fd --type d --hidden --exclude .java --exclude .cargo --exclude .rustup --exclude .emacs.d --exclude .pex --exclude .cabal --exclude .dotnet --exclude .vscode --exclude .git --exclude node_module --exclude .cache --exclude .npm --exclude .mozilla --exclude .meteor --exclude .nv --exclude .jupyter --exclude .ssh --exclude .gnupg --exclude .nix-defexpr --exclude .powerlevel10k --exclude .docker --exclude .pki --exclude .ipython --exclude .steam --exclude .local --exclude .opam | fzf --preview='ls --color {}')";
 
         # Git aliases

@@ -34,7 +34,6 @@
         clang-tools
         neofetch
         lua-language-server
-        nil
         texliveFull
         calibre
         nixd
@@ -47,6 +46,11 @@
         cmake
         vlc
         eza
+        mongodb-ce
+        direnv
+        pyright
+        jetbrains.pycharm-professional
+        typescript-language-server
 
         # Gnome extensions from stable branch
         gnomeExtensions.space-bar
