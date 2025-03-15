@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
     programs.tmux = {
@@ -12,6 +12,7 @@
         historyLimit = 50000;
         mouse = true;
         terminal = "screen-256color";
+        shell = "${pkgs.fish}/bin/fish";
 
         customPaneNavigationAndResize = true;
         keyMode = "vi";
