@@ -3,16 +3,26 @@
 {
     programs.tmux = {
         enable = true;
+
+        prefix = "C-s";
+
         clock24 = true;
-        keyMode = "vi";
         baseIndex = 1;
         escapeTime = 0;
-        prefix = "C-s";
         historyLimit = 50000;
+        mouse = true;
+        terminal = "screen-256color";
+
+        customPaneNavigationAndResize = true;
+        keyMode = "vi";
 
         extraConfig = ''
-            bind C-p previous-window
-            bind C-n next-window
+            # change title size
+            set -g status-left-length 20
+
+            # -n option means "without prefix"
+            bind -n C-p previous-window
+            bind -n C-n next-window
         '';
     };
 }
