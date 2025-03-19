@@ -70,6 +70,7 @@
         "wheel"
         "networkmanager"
         "docker"
+        "vboxusers"
       ];
     };
   };
@@ -156,6 +157,7 @@
   systemd.services."autovt@tty1".enable = false;
 
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   system.stateVersion = "24.05"; # Dont change - represents the first installed NixOS version
 }

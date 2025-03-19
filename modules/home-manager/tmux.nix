@@ -11,7 +11,7 @@
         escapeTime = 0;
         historyLimit = 50000;
         mouse = true;
-        terminal = "screen-256color";
+        terminal = "tmux-256color";
         shell = "${pkgs.fish}/bin/fish";
 
         customPaneNavigationAndResize = true;
@@ -21,9 +21,7 @@
             # change title size
             set -g status-left-length 20
 
-            # -n option means "without prefix"
-            bind -n C-p previous-window
-            bind -n C-n next-window
+            set-option -a terminal-features 'alacritty:RGB'
         '';
     };
 }
