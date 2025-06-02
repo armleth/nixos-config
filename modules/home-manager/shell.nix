@@ -50,7 +50,7 @@
 
     zsh = {
       enable = true;
-      initExtra = ''
+      initContent = ''
         [[ ! -f ${./p10k-config/p10k.zsh} ]] || source ${./p10k-config/p10k.zsh}
 
         bindkey -e

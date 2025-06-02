@@ -50,7 +50,12 @@
         direnv
         pyright
         jetbrains.pycharm-professional
+        jetbrains.datagrip
         typescript-language-server
+        python312Full
+        dwt1-shell-color-scripts
+        nodejs
+        nixfmt-rfc-style
 
         # Gnome extensions from stable branch
         gnomeExtensions.space-bar
@@ -68,19 +73,19 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-        "default-web-browser"           = [ "firefox.desktop" ];
-        "text/html"                     = [ "firefox.desktop" ];
-        "x-scheme-handler/http"         = [ "firefox.desktop" ];
-        "x-scheme-handler/https"        = [ "firefox.desktop" ];
-        "x-scheme-handler/about"        = [ "firefox.desktop" ];
-        "x-scheme-handler/unknown"      = [ "firefox.desktop" ];
+      "default-web-browser" = [ "firefox.desktop" ];
+      "text/html" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/about" = [ "firefox.desktop" ];
+      "x-scheme-handler/unknown" = [ "firefox.desktop" ];
     };
   };
 
   programs = {
     java = {
-        package = pkgs.jdk17_headless;
-        enable = true;
+      package = pkgs.jdk17_headless;
+      enable = true;
     };
 
     git = {

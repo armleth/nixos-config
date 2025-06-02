@@ -30,6 +30,11 @@
     "flakes"
   ];
 
+  # networking.extraHosts =
+  #   ''
+  #     127.0.0.1 auth.armleth.fr
+  #   '';
+
   environment.systemPackages = with pkgs; [
     git
     htop
@@ -43,12 +48,8 @@
 
   fonts.packages = with pkgs; [
     meslo-lgs-nf
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "Inconsolata"
-      ];
-    })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.inconsolata
   ];
 
   # Time zone.
@@ -71,6 +72,9 @@
         "networkmanager"
         "docker"
         "vboxusers"
+      ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFx1yMiV7vpOQxKzzwLMShkl2qj55OUuEy/BHuiyQjas armleth@ArmlethArch"
       ];
     };
   };
@@ -128,10 +132,17 @@
     fish.enable = true;
   };
 
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+    settings.PermitRootLogin = "yes";
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -158,6 +169,12 @@
 
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = true;
+
+  nix.gc = {
+    automatic = true;
+    randomizedDelaySec = "14m";
+    options = "--delete-older-than 10d";
+  };
 
   system.stateVersion = "24.05"; # Dont change - represents the first installed NixOS version
 }

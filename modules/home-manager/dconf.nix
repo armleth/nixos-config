@@ -33,6 +33,7 @@
 
         "org/gnome/mutter" = {
           workspaces-only-on-primary = true;
+          dynamic-workspaces = false;
         };
 
         "org/gnome/desktop/background" =
@@ -72,8 +73,8 @@
         };
 
         "org/gnome/shell/extensions/Bluetooth-Battery-Meter" = {
-            enable-battery-level-text = true;
-            enable-battery-indicator-text = true;
+          enable-battery-level-text = true;
+          enable-battery-indicator-text = true;
         };
 
         "com/github/Ory0n/Resource_Monitor" = {
@@ -97,8 +98,8 @@
               "<Super>Up"
               "<Super>w"
             ];
-            switch-applications = [];
-            switch-applications-backward = [];
+            switch-applications = [ ];
+            switch-applications-backward = [ ];
             switch-windows = [ "<Alt>Tab" ];
             switch-windows-backward = [ "<Shift><Alt>Tab" ];
           }
