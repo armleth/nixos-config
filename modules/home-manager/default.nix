@@ -66,11 +66,12 @@
           datagrip
         ])
         ++ (with gnomeExtensions; [
-          space-bar
-          transparent-top-bar-adjustable-transparency
+          bluetooth-battery-meter
+          launch-new-instance
           no-titlebar-when-maximized
           privacy-settings-menu
-          bluetooth-battery-meter
+          space-bar
+          transparent-top-bar-adjustable-transparency
         ])
       )
       ++ (with pkgsUnstable; [

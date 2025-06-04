@@ -62,6 +62,7 @@
             "no-titlebar-when-maximized@alec.ninja"
             "PrivacyMenu@stuarthayhurst"
             "Bluetooth-Battery-Meter@maniacx.github.com"
+            "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
           ];
         };
 
