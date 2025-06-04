@@ -20,50 +20,59 @@
     homeDirectory = "/home/armleth";
 
     packages =
-      (with pkgs; [
-        ripgrep
-        fzf
-        fd
-        slack
-        vscode
-        chromium
-        tmux
-        gnumake
-        gcc
-        criterion
-        clang-tools
-        neofetch
-        lua-language-server
-        texliveFull
-        calibre
-        nixd
-        neovim
-        jetbrains.idea-ultimate
-        # jdk21_headless
-        jdk17_headless
-        bat
-        yaml-cpp
-        cmake
-        vlc
-        eza
-        mongodb-ce
-        direnv
-        pyright
-        jetbrains.pycharm-professional
-        jetbrains.datagrip
-        typescript-language-server
-        python312Full
-        dwt1-shell-color-scripts
-        nodejs
-        nixfmt-rfc-style
+      (
+        with pkgs;
+        [
+          # Basic unix tools
+          bat
+          eza
+          fd
+          fzf
+          neofetch
+          ripgrep
 
-        # Gnome extensions from stable branch
-        gnomeExtensions.space-bar
-        gnomeExtensions.transparent-top-bar-adjustable-transparency
-        gnomeExtensions.no-titlebar-when-maximized
-        gnomeExtensions.privacy-settings-menu
-        gnomeExtensions.bluetooth-battery-meter
-      ])
+          # Apps
+          calibre
+          chromium
+          slack
+          vlc
+
+          # Editor
+          dwt1-shell-color-scripts
+          neovim
+          tmux
+          vscode
+
+          # Dev packages
+          clang-tools
+          cmake
+          criterion
+          gcc
+          gnumake
+          jdk17_headless
+          lua-language-server
+          nixd
+          nixfmt-rfc-style
+          nodejs
+          pyright
+          python312Full
+          texliveFull
+          typescript-language-server
+          yaml-cpp
+        ]
+        ++ (with jetbrains; [
+          pycharm-professional
+          idea-ultimate
+          datagrip
+        ])
+        ++ (with gnomeExtensions; [
+          space-bar
+          transparent-top-bar-adjustable-transparency
+          no-titlebar-when-maximized
+          privacy-settings-menu
+          bluetooth-battery-meter
+        ])
+      )
       ++ (with pkgsUnstable; [
         # Gnome extensions from unstable branch - generally because of gnome version conflicts
         gnomeExtensions.resource-monitor

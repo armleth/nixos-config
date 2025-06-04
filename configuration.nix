@@ -22,18 +22,15 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-
-  # networking.extraHosts =
-  #   ''
-  #     127.0.0.1 auth.armleth.fr
-  #   '';
 
   environment.systemPackages = with pkgs; [
     git
@@ -113,9 +110,18 @@
       };
       pulse.enable = true;
     };
-  };
+    pulseaudio.enable = false;
 
-  programs.dconf.enable = true;
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+      settings.KbdInteractiveAuthentication = false;
+      settings.PermitRootLogin = "yes";
+    };
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+  };
 
   environment.gnome.excludePackages = with pkgs; [
     gnome-photos
@@ -130,19 +136,10 @@
   programs = {
     zsh.enable = true;
     fish.enable = true;
+    dconf.enable = true;
+    direnv.enable = true;
   };
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-    settings.PermitRootLogin = "yes";
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
-  services.pulseaudio.enable = false;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
