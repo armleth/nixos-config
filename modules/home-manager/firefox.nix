@@ -35,6 +35,12 @@
           default_area = "navbar";
         };
 
+        # material icons for github
+        "{eac6e624-97fa-4f28-9d24-c06c9b8aa713}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/material-icons-for-github/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
         # languages packs
         "langpack-en-US@firefox.mozilla.org" = {
           installation_mode = "normal_installed";
