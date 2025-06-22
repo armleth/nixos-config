@@ -16,16 +16,11 @@
           default_area = "navbar";
         };
 
-        # GNOME Shell integration
-        "chrome-gnome-shell@gnome.org" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/gnome-shell-integration/latest.xpi";
-          installation_mode = "force_installed";
-        };
-
         # infinity pegasus
         "{9a066f3e-5093-471f-9495-fd8618959c81}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/infinity-pegasus/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "menupanel";
         };
 
         # bitwarden
@@ -39,6 +34,7 @@
         "{eac6e624-97fa-4f28-9d24-c06c9b8aa713}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/material-icons-for-github/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "menupanel";
         };
 
         # languages packs
