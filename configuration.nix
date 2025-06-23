@@ -111,6 +111,7 @@
       pulse.enable = true;
     };
     pulseaudio.enable = false;
+    printing.enable = true;
 
     openssh = {
       enable = true;
