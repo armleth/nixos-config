@@ -59,6 +59,7 @@
           texliveFull
           typescript-language-server
           yaml-cpp
+          vscode-langservers-extracted
         ]
         ++ (with jetbrains; [
           pycharm-professional
