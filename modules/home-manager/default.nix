@@ -60,6 +60,7 @@
           typescript-language-server
           yaml-cpp
           vscode-langservers-extracted
+          kubectl
         ]
         ++ (with jetbrains; [
           pycharm-professional
