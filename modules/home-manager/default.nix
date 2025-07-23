@@ -61,6 +61,7 @@
           yaml-cpp
           vscode-langservers-extracted
           kubectl
+          sqlfluff
         ]
         ++ (with jetbrains; [
           pycharm-professional
