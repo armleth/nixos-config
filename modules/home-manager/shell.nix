@@ -7,6 +7,9 @@
 
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
+
+        set -gx PGDATA "$HOME/postgres_data"
+        set -gx PGHOST "/tmp"
       '';
 
       shellInit = ''

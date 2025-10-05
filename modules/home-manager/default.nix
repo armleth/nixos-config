@@ -62,6 +62,8 @@
           vscode-langservers-extracted
           kubectl
           sqlfluff
+
+          teamviewer
         ]
         ++ (with jetbrains; [
           pycharm-professional

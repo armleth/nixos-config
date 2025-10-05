@@ -127,6 +127,8 @@
       settings.PermitRootLogin = "yes";
     };
 
+    teamviewer.enable = true;
+
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };

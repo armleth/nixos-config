@@ -37,6 +37,19 @@
           default_area = "menupanel";
         };
 
+        # authenticator
+        "authenticator@mymindstorm" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/auth-helper/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "navbar";
+        };
+
+        # "sandvpn_@sandvpn.com" = {
+        #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/sandvpn/latest.xpi";
+        #   installation_mode = "force_installed";
+        #   default_area = "menupanel";
+        # };
+
         # languages packs
         "langpack-en-US@firefox.mozilla.org" = {
           installation_mode = "normal_installed";
