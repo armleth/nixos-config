@@ -36,6 +36,8 @@
           chromium
           slack
           vlc
+          filezilla
+          teamviewer
 
           # Editor
           dwt1-shell-color-scripts
@@ -62,8 +64,6 @@
           vscode-langservers-extracted
           kubectl
           sqlfluff
-
-          teamviewer
         ]
         ++ (with jetbrains; [
           pycharm-professional
