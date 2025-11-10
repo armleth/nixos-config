@@ -7,6 +7,35 @@
   ...
 }:
 
+let
+  jetbrainsApps = with pkgs.jetbrains; [
+    pycharm-professional
+    idea-ultimate
+    datagrip
+  ];
+
+  # This code modifies the .desktop files of JetBrains applications by adding the
+  # JVM option `-Dawt.toolkit.name=WLToolkit` to the Exec command.
+  # On Wayland, this fixes focus and input issues with Java AWT/Swing applications.
+  #
+  # See:
+  #     - https://blog.jetbrains.com/platform/2024/07/wayland-support-preview-in-2024-2/
+  #     - https://www.reddit.com/r/NixOS/comments/1hr293i/how_to_properly_handle_desktop_files_with/
+  jetbrainsDesktopMods = map (
+    jetbrainsApp:
+    (lib.hiPrio (
+      pkgs.runCommand "${jetbrainsApp.pname}-desktop-modify" { } ''
+        mkdir -p $out/share/applications
+        substitute ${jetbrainsApp}/share/applications/${jetbrainsApp.pname}.desktop \
+            $out/share/applications/${jetbrainsApp.pname}.desktop \
+            --replace-fail "Exec=${jetbrainsApp.pname}" "Exec=${jetbrainsApp.pname} -Dawt.toolkit.name=WLToolkit"
+      ''
+    ))
+  ) jetbrainsApps;
+
+  jetbrainsAppsAndDesktopMods = jetbrainsApps ++ jetbrainsDesktopMods;
+
+in
 {
   imports = [
     ./dconf.nix
@@ -55,6 +84,7 @@
           lua-language-server
           nixd
           nixfmt-rfc-style
+          verible
           nodejs
           pyright
           python312Full
@@ -64,12 +94,12 @@
           vscode-langservers-extracted
           kubectl
           sqlfluff
+
+          # To mount afs from home
+          sshfs
+          krb5
         ]
-        ++ (with jetbrains; [
-          pycharm-professional
-          idea-ultimate
-          datagrip
-        ])
+        ++ jetbrainsAppsAndDesktopMods
         ++ (with gnomeExtensions; [
           bluetooth-battery-meter
           launch-new-instance

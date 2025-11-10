@@ -148,6 +148,7 @@
     fish.enable = true;
     dconf.enable = true;
     direnv.enable = true;
+    ssh.package = pkgs.openssh_gssapi;
   };
 
   hardware.bluetooth = {
