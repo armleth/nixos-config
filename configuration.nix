@@ -83,29 +83,32 @@
       xkb = {
         layout = "us";
       };
+    };
 
-      displayManager.gdm = {
+    desktopManager.gnome = {
+      enable = true;
+      extraGSettingsOverridePackages = [ pkgs.mutter ];
+      extraGSettingsOverrides = ''
+        [org.gnome.mutter]
+        experimental-features=['scale-monitor-framebuffer']
+      '';
+    };
+
+    displayManager = {
+      gdm = {
         enable = true;
         wayland = true;
       };
-      desktopManager.gnome = {
+
+      autoLogin = {
         enable = true;
-        extraGSettingsOverridePackages = [ pkgs.mutter ];
-        extraGSettingsOverrides = ''
-          [org.gnome.mutter]
-          experimental-features=['scale-monitor-framebuffer']
-        '';
+        user = "armleth";
       };
     };
 
     gnome = {
       gnome-keyring.enable = true;
       # gnome-browser-connector.enable = true;
-    };
-
-    displayManager.autoLogin = {
-      enable = true;
-      user = "armleth";
     };
 
     pipewire = {

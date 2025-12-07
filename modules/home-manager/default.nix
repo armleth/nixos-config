@@ -67,6 +67,7 @@ in
           vlc
           filezilla
           teamviewer
+          musescore
 
           # Editor
           dwt1-shell-color-scripts
@@ -87,7 +88,7 @@ in
           verible
           nodejs
           pyright
-          python312Full
+          python312
           texliveFull
           typescript-language-server
           yaml-cpp
@@ -107,12 +108,10 @@ in
           privacy-settings-menu
           space-bar
           transparent-top-bar-adjustable-transparency
+          resource-monitor
         ])
       )
-      ++ (with pkgsUnstable; [
-        # Gnome extensions from unstable branch - generally because of gnome version conflicts
-        gnomeExtensions.resource-monitor
-      ]);
+      ++ (with pkgsUnstable; [ ]);
   };
 
   xdg.mimeApps = {
@@ -138,8 +137,12 @@ in
 
     git = {
       enable = true;
-      userName = "Armleth";
-      userEmail = "armand.thibaudon@epita.fr";
+      settings = {
+        user = {
+          name = "Armleth";
+          email = "armand.thibaudon@epita.fr";
+        };
+      };
     };
 
     alacritty = {
