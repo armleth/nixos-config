@@ -9,8 +9,8 @@
 
 let
   jetbrainsApps = with pkgs.jetbrains; [
-    pycharm-professional
-    idea-ultimate
+    pycharm
+    idea
     datagrip
   ];
 

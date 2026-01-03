@@ -10,6 +10,8 @@
 
         set -gx PGDATA "$HOME/postgres_data"
         set -gx PGHOST "/tmp"
+
+        set -gx NIXPKGS_ALLOW_UNFREE 1
       '';
 
       shellInit = ''
