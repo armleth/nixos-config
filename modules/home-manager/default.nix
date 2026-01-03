@@ -56,7 +56,6 @@ in
           bat
           eza
           fd
-          fzf
           neofetch
           ripgrep
 
@@ -130,6 +129,11 @@ in
   };
 
   programs = {
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     java = {
       package = pkgs.jdk17_headless;
       enable = true;
