@@ -44,6 +44,13 @@
                     default_area = "navbar";
                 };
 
+                # emotes for twitch
+                "moz-addon-prod@7tv.app" = {
+                    install_url = "https://addons.mozilla.org/firefox/downloads/latest/7tv-extension/latest.xpi";
+                    installation_mode = "force_installed";
+                    default_area = "menupanel";
+                };
+
                 # "sandvpn_@sandvpn.com" = {
                 #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/sandvpn/latest.xpi";
                 #   installation_mode = "force_installed";
