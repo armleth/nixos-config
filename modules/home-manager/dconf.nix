@@ -98,6 +98,24 @@
                         "<Super>Up"
                         "<Super>w"
                     ];
+
+                    move-to-monitor-down = [
+                        "<Super><Shift>Down"
+                        "<Super><Shift>j"
+                    ];
+                    move-to-monitor-left = [
+                        "<Super><Shift>Left"
+                        "<Super><Shift>h"
+                    ];
+                    move-to-monitor-right = [
+                        "<Super><Shift>Right"
+                        "<Super><Shift>l"
+                    ];
+                    move-to-monitor-up = [
+                        "<Super><Shift>Up"
+                        "<Super><Shift>k"
+                    ];
+
                     switch-applications = [ ];
                     switch-applications-backward = [ ];
                     switch-windows = [ "<Alt>Tab" ];
