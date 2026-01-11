@@ -67,6 +67,7 @@ in
                     filezilla
                     teamviewer
                     musescore
+                    mission-center
 
                     # Editor
                     dwt1-shell-color-scripts

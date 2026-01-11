@@ -81,6 +81,7 @@
                 "com/github/Ory0n/Resource_Monitor" = {
                     diskspacestatus = false;
                     diskstatsstatus = false;
+                    leftclickstatus = "missioncenter";
                     netethstatus = false;
                     netwlanstatus = false;
                     ramunit = "perc";
