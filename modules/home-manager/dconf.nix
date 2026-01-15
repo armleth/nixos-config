@@ -177,7 +177,7 @@
 
                     # Assumes Windows boot entry is named auto-windows (default for systemd-boot)
                     # Check it with `bootctl list`
-                    command = "systemctl reboot --boot-loader-entry=auto-windows";
+                    command = "systemctl reboot --boot-loader-entry=auto-windows --boot-loader-menu=1";
                     name = "Reboot to Windows";
                 };
 
