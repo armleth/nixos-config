@@ -152,12 +152,33 @@
                 "org/gnome/settings-daemon/plugins/media-keys" = {
                     custom-keybindings = [
                         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+                        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+                        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+                        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
                     ];
                 };
                 "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
                     binding = "<Super>Return";
                     command = "alacritty";
                     name = "open-terminal";
+                };
+                "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+                    binding = "<Ctrl><Alt>r";
+                    command = "systemctl reboot";
+                    name = "Reboot System";
+                };
+                "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+                    binding = "<Ctrl><Alt>p";
+                    command = "systemctl poweroff";
+                    name = "Shutdown System";
+                };
+                "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+                    binding = "<Ctrl><Alt>w";
+
+                    # Assumes Windows boot entry is named auto-windows (default for systemd-boot)
+                    # Check it with `bootctl list`
+                    command = "systemctl reboot --boot-loader-entry=auto-windows";
+                    name = "Reboot to Windows";
                 };
 
                 # Workspaces settings
