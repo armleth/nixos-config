@@ -58,6 +58,7 @@ in
                     fd
                     neofetch
                     ripgrep
+                    jq
 
                     # Apps
                     calibre
@@ -68,12 +69,16 @@ in
                     teamviewer
                     musescore
                     mission-center
+                    zoom-us
+                    insomnia
+                    jellyfin-media-player
 
                     # Editor
                     dwt1-shell-color-scripts
                     neovim
                     tmux
                     vscode
+                    android-studio
 
                     # Dev packages
                     clang-tools
@@ -95,6 +100,9 @@ in
                     vscode-langservers-extracted
                     kubectl
                     sqlfluff
+
+                    # AI
+                    claude-code
 
                     # To mount afs from home
                     sshfs
@@ -161,6 +169,33 @@ in
                     bold.family = "MesloLGS NF";
                     italic.family = "MesloLGS NF";
                 };
+            };
+        };
+
+        mpv = {
+            enable = true;
+            config = {
+                # Hardware acceleration
+                hwdec = "vaapi";
+                vo = "gpu";
+                gpu-context = "wayland";
+
+                # HDR and color management
+                target-colorspace-hint = true;
+                target-prim = "auto";
+                target-trc = "auto";
+                hdr-compute-peak = true;
+                tone-mapping = "hable";
+                tone-mapping-param = "default";
+
+                # Better quality
+                profile = "gpu-hq";
+                scale = "ewa_lanczossharp";
+                cscale = "ewa_lanczossharp";
+
+                # Performance
+                vd-lavc-dr = true;
+                opengl-pbo = true;
             };
         };
     };

@@ -32,6 +32,11 @@
         "flakes"
     ];
 
+    environment.sessionVariables = {
+        MOZ_DISABLE_RDD_SANDBOX = "1";
+        LIBVA_DRIVER_NAME = "radeonsi";
+    };
+
     environment.systemPackages = with pkgs; [
         git
         htop
@@ -90,7 +95,7 @@
             extraGSettingsOverridePackages = [ pkgs.mutter ];
             extraGSettingsOverrides = ''
                 [org.gnome.mutter]
-                experimental-features=['scale-monitor-framebuffer']
+                experimental-features=['scale-monitor-framebuffer', 'variable-refresh-rate']
             '';
         };
 
@@ -152,6 +157,15 @@
         dconf.enable = true;
         direnv.enable = true;
         ssh.package = pkgs.openssh_gssapi;
+    };
+
+    hardware.graphics = {
+        enable = true;
+        extraPackages = with pkgs; [
+            libva
+            libvdpau-va-gl
+            libva-utils
+        ];
     };
 
     hardware.bluetooth = {

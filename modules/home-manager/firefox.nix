@@ -85,6 +85,11 @@
                     "browser.newtabpage.activity-stream.showSponsored" = lock-false;
                     "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
                     "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
+                    "media.ffmpeg.vaapi.enabled" = lock-true;
+                    "media.hardware-video-decoding.force-enabled" = lock-true;
+                    "widget.dmabuf.force-enabled" = lock-true;
+                    "gfx.webrender.all" = lock-true;
+                    "gfx.x11-egl.force-enabled" = lock-true;
                 };
         };
     };
