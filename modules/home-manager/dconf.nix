@@ -86,6 +86,7 @@
                     netwlanstatus = false;
                     ramunit = "perc";
                     refreshtime = 1;
+                    iconsposition = "right";
                 };
 
                 "com/ftpix/transparentbar" = {
