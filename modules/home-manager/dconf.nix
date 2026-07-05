@@ -78,7 +78,7 @@
                     enable-battery-indicator-text = true;
                 };
 
-                "com/github/Ory0n/Resource_Monitor" = {
+                "org/gnome/shell/extensions/resource-monitor" = {
                     diskspacestatus = false;
                     diskstatsstatus = false;
                     leftclickstatus = "missioncenter";

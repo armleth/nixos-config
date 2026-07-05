@@ -4,6 +4,8 @@
     programs.firefox = {
         enable = true;
 
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
+
         policies = {
             ExtensionSettings = {
                 # blocks all addons except the ones specified below

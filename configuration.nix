@@ -40,7 +40,6 @@
     environment.systemPackages = with pkgs; [
         git
         htop
-        neofetch
         gnome-tweaks
         dconf-editor
         discord
@@ -95,14 +94,13 @@
             extraGSettingsOverridePackages = [ pkgs.mutter ];
             extraGSettingsOverrides = ''
                 [org.gnome.mutter]
-                experimental-features=['scale-monitor-framebuffer', 'variable-refresh-rate']
+                experimental-features=['scale-monitor-framebuffer']
             '';
         };
 
         displayManager = {
             gdm = {
                 enable = true;
-                wayland = true;
             };
 
             autoLogin = {

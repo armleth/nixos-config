@@ -56,7 +56,6 @@ in
                     bat
                     eza
                     fd
-                    neofetch
                     ripgrep
                     jq
 
@@ -78,7 +77,7 @@ in
                     neovim
                     tmux
                     vscode
-                    android-studio
+                    # android-studio
 
                     # Dev packages
                     clang-tools
@@ -89,7 +88,7 @@ in
                     jdk17_headless
                     lua-language-server
                     nixd
-                    nixfmt-rfc-style
+                    nixfmt
                     verible
                     nodejs
                     pyright
@@ -101,7 +100,6 @@ in
                     kubectl
                     sqlfluff
 
-                    # AI
                     claude-code
 
                     # To mount afs from home
@@ -119,7 +117,9 @@ in
                     resource-monitor
                 ])
             )
-            ++ (with pkgsUnstable; [ ]);
+            ++ (with pkgsUnstable; [
+                # claude-code
+            ]);
     };
 
     xdg.mimeApps = {
